@@ -20,8 +20,7 @@ function find() {
    */
   return db('users')
     .join('roles', 'users.role_id', 'roles.role_id')
-    .select('users.username', 'users.user_id', 'roles.role_name')
-    .orderBy('users.user_id')
+    .select('username', 'user_id', 'role_name')
 }
 
 function findBy(filter) {
@@ -40,7 +39,7 @@ function findBy(filter) {
    */
   return db('users')
     .join('roles', 'users.role_id', 'roles.role_id')
-    .select('users.username', 'users.password', 'users.user_id','roles.role_name')
+    .select('username', 'password', 'user_id','role_name')
     .where(filter)
 }
 
@@ -57,9 +56,8 @@ function findById(user_id) {
    */
   return db('users')
     .join('roles', 'users.role_id', 'roles.role_id')
-    .select('users.user_id', 'users.username', 'roles.role_name')
-    .where('users.user_id', user_id)
-    .first()
+    .select('user_id', 'username', 'role_name')
+    .where('users.user_id', user_id).first()
 }
 
 /**
